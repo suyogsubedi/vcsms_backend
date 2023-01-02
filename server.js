@@ -2,6 +2,7 @@ const express = require("express");
 const app = express();
 const mongoose = require("mongoose");
 const registerVehicle = require("./src/routes/vehicleRegistration.route")
+const userRoutes = require("./src/routes/user.route")
 require('dotenv').config()
 app.use(express.json())
 
@@ -22,4 +23,5 @@ try {
 app.get("/",(req,res)=>{
     res.json("Hello From VCSMS Backend")
 })
-app.use("/register",registerVehicle)
+app.use("api/register",registerVehicle)
+app.use("/api/user",userRoutes)
