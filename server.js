@@ -1,10 +1,12 @@
 const express = require("express");
 const app = express();
 const mongoose = require("mongoose");
+const cors = require('cors')
 const registerVehicle = require("./src/routes/vehicleRegistration.route")
 const userRoutes = require("./src/routes/user.route")
 require('dotenv').config()
 app.use(express.json())
+app.use(cors())
 
 // database connection
 try {
