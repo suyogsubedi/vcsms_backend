@@ -14,7 +14,7 @@ const loginUser = async (req, res) => {
     const { isDev, userRole } = user;
     res.status(200).json({ username, token, isDev, userRole });
   } catch (error) {
-    res.status(400).json({ error: error.message });
+    res.status(401).json({ error: error.message });
   }
 };
 
@@ -31,4 +31,22 @@ const signupUser = async (req, res) => {
   }
 };
 
-module.exports = { signupUser, loginUser };
+//get all Managers
+const getUsersByRole = async (req, res) => {
+  const { role } = req.body;
+  if (!role) {
+    const users = await User.find();
+    return res.status(200).json({ users });
+  }
+  try {
+    const users = await User.find({ userRole: role });
+    if(users==""){
+      return res.json("There are no users with this role")
+    }
+    return res.status(200).json({ users });
+  } catch (error) {
+    res.status(400).json({ error: "Sorry, I couldn't fetch users and their roles." });
+  }
+};
+
+module.exports = { signupUser, loginUser, getUsersByRole };
