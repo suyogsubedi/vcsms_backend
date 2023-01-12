@@ -15,7 +15,6 @@ const addStation = async (req, res) => {
   //if there is station with this name then we won't have empty response
   if (stationExists != '') {
     return res
-      .status(422)
       .json(
         `Charging station with name ${stationName} already exists.Use unique name`,
       );
