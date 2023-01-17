@@ -6,13 +6,13 @@ const addStation = async (req, res) => {
     req.body;
   //checking if username provided exists
   const userExists = await User.findOne({ username: stationManagers });
-  if (userExists == '') {
+  if (userExists === null) {
     return res.json('This user is not registered, Register the user first');
   }
   const stationExists = await Station.find({
     stationName: stationName.trim(),
   });
-  //if there i1s station with this name then we won't have empty response
+  //if there is station with this name then we won't have empty response
   if (stationExists != '') {
     return res
       .json(
