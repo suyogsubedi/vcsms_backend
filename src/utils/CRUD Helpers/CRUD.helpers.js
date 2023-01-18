@@ -13,7 +13,7 @@ exports.create = (model) => async (req, res) => {
     try {
         const data = new model(req.body);
         await data.save();
-        res.status(201).json(data);
+        return res.status(201).json(data);
     } catch (err) {
         res.status(400).json({ message: err.message });
     }
@@ -44,3 +44,9 @@ exports.updateData = (model) => async (req, res) => {
         res.status(500).json({ message: err.message });
     }
 };
+
+exports.getSingleData = (model)=>async(req,res)=>{
+    try{
+        const data = await model.findOne()
+    }catch(err){}
+}

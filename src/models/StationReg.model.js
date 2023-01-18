@@ -11,6 +11,7 @@ const charginStationSchema = new Schema({
   stationLocation: {
     type: String,
     required: true,
+    trim:true
   },
   numberOfVehicles: {
     type: Number,
@@ -20,6 +21,10 @@ const charginStationSchema = new Schema({
     type: [],
     default:[],
   },
+  registeredVehicles:{
+    type:[],
+    default:[]
+  }
 });
 
 module.exports = mongoose.model('Station',charginStationSchema);
