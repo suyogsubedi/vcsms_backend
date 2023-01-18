@@ -6,7 +6,6 @@ const {
   updateData,
   deleteData,
 } = require('../utils/CRUD Helpers/CRUD.helpers');
-const { itExists } = require('../utils/queries.utils');
 
 const addVehicle = async (req, res) => {};
 
